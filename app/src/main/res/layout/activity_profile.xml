@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="#5DA6FF"
+        android:padding="20dp">
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_arrow_back_white_24dp" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/user_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/user"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email@gmail.com"
+            android:textColor="@color/colorLoginPrimaryDark"
+            android:textSize="20dp"
+            android:layout_toRightOf="@id/user_img"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:includeFontPadding="false"/>
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="username"
+            android:textColor="@color/colorLoginPrimaryDark"
+            android:textSize="16dp"
+            android:layout_toRightOf="@id/user_img"
+            android:layout_below="@id/email"
+            android:layout_marginLeft="10dp"
+            android:includeFontPadding="false"/>
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-100dp"
+        android:layout_width="match_parent"
+        android:padding="20dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_height="125dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            app:cardBackgroundColor="#5DA6FF"
+            app:cardElevation="10dp">
+
+            <RelativeLayout
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:padding="5dp">
+
+                <ImageView
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="50dp"
+                    android:layout_width="50dp"
+                    android:src="@drawable/ic_cart" />
+
+                <TextView
+                    android:id="@+id/payment_label"
+                    android:includeFontPadding="false"
+                    android:layout_centerInParent="true"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/colorLoginPrimaryDark"
+                    android:text="0"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/cart_label"
+                    android:includeFontPadding="false"
+                    android:layout_below="@id/payment_label"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Giỏ Hàng"
+                    android:textColor="@color/colorLoginPrimaryDark"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_height="125dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            app:cardBackgroundColor="#5DA6FF"
+            app:cardElevation="10dp">
+
+            <RelativeLayout
+                android:id="@+id/logoutbn"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:padding="5dp">
+
+
+                <TextView
+                    android:id="@+id/logout"
+                    android:includeFontPadding="false"
+                    android:layout_centerInParent="true"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Đăng xuất"
+                    android:textColor="@color/colorLoginPrimaryDark"
+                    android:textSize="20dp" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:orientation="vertical">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/mail"
+                style="@style/parent.TextLayout"
+                app:boxBackgroundColor="#FFFFFF"
+                app:startIconDrawable="@drawable/ic_id_card"
+                >
+
+                <EditText
+                    android:id="@+id/editTextUsername"
+                    style="@style/modifiedEditText"
+                    android:hint="Tên người dùng"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:text="email"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputPassword"
+                style="@style/parent.TextLayout"
+                app:boxBackgroundColor="#FFFFFF"
+                android:layout_marginTop="@dimen/signup_text_margin_top"
+                app:startIconDrawable="@drawable/ic_padlock">
+                <EditText
+                    android:id="@+id/editTextPassword"
+                    style="@style/modifiedEditText"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:hint="Mật khẩu"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputRepeatPassword"
+                style="@style/parent.TextLayout"
+                app:boxBackgroundColor="#FFFFFF"
+                android:layout_marginTop="@dimen/signup_text_margin_top"
+                app:startIconDrawable="@drawable/ic_padlock">
+                <EditText
+                    android:id="@+id/editTextRepeatPassword"
+                    style="@style/modifiedEditText"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:hint="Nhập lại mật khẩu"/>
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp">
+            <Button
+                android:background="#5DA6FF"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:textColor="@color/colorLoginPrimaryDark"
+                android:text="Lưu" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

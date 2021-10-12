@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp">
+
+    <LinearLayout
+        android:id="@+id/wrap_item"
+        android:layout_width="wrap_content"
+        android:layout_height="140dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
+        android:background="@color/colorLoginPrimaryDark"
+        >
+
+        <ImageView
+            android:id="@+id/categoryImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/thoitrangnam"
+            android:tag="thoitrangnam"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+        <TextView
+            android:id="@+id/categoryLabel"
+            android:textAlignment="center"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Thời Trang Nam"
+            android:textColor="@color/blackTextColor"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
