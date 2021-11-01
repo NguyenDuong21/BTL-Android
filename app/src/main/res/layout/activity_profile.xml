@@ -55,6 +55,7 @@
         android:padding="20dp">
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/view_history"
             android:layout_height="125dp"
             android:layout_margin="10dp"
             android:layout_weight="1"
@@ -90,7 +91,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="Giỏ Hàng"
+                    android:text="Đơn đặt hàng"
                     android:textColor="@color/colorLoginPrimaryDark"
                     android:textSize="20sp" />
 
@@ -98,6 +99,7 @@
 
         </com.google.android.material.card.MaterialCardView>
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/logoutbn"
             android:layout_height="125dp"
             android:layout_margin="10dp"
             android:layout_weight="1"
@@ -106,7 +108,6 @@
             app:cardElevation="10dp">
 
             <RelativeLayout
-                android:id="@+id/logoutbn"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:padding="5dp">
@@ -155,44 +156,6 @@
                     />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputPassword"
-                style="@style/parent.TextLayout"
-                app:boxBackgroundColor="#FFFFFF"
-                android:layout_marginTop="@dimen/signup_text_margin_top"
-                app:startIconDrawable="@drawable/ic_padlock">
-                <EditText
-                    android:id="@+id/editTextPassword"
-                    style="@style/modifiedEditText"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:hint="Mật khẩu"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputRepeatPassword"
-                style="@style/parent.TextLayout"
-                app:boxBackgroundColor="#FFFFFF"
-                android:layout_marginTop="@dimen/signup_text_margin_top"
-                app:startIconDrawable="@drawable/ic_padlock">
-                <EditText
-                    android:id="@+id/editTextRepeatPassword"
-                    style="@style/modifiedEditText"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:hint="Nhập lại mật khẩu"/>
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="15dp">
-            <Button
-                android:background="#5DA6FF"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_width="match_parent"
-                android:textColor="@color/colorLoginPrimaryDark"
-                android:text="Lưu" />
         </LinearLayout>
 
     </LinearLayout>

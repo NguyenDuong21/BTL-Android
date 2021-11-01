@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
+    id 'com.huawei.agconnect'
 }
 
 android {
@@ -8,8 +9,8 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.example.testapplication"
-        minSdkVersion 16
+        applicationId "com.example.MyBTL"
+        minSdkVersion 18
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -17,8 +18,21 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+
+    signingConfigs {
+        config {
+            storeFile file('E:\\Learning Android\\MyBTL\\location_key\\key.jks')
+            storePassword 'Anhung21'
+            keyPassword 'Anhung21'
+            keyAlias 'keylocation'
+        }
+    }
     buildTypes {
+        debug {
+            signingConfig signingConfigs.config
+        }
         release {
+            signingConfig signingConfigs.config
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -46,4 +60,9 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation "androidx.cardview:cardview:1.0.0"
+    implementation 'com.huawei.agconnect:agconnect-core:1.5.2.300'
+    implementation "com.huawei.agconnect:agconnect-auth:1.6.0.300"
+    implementation "com.huawei.agconnect:agconnect-auth-google:1.6.0.300"
+    implementation 'com.google.code.gson:gson:2.8.8'
+    implementation 'com.huawei.hms:location:4.0.2.300'
 }

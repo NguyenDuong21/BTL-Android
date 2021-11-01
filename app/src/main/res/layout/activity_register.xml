@@ -7,6 +7,8 @@
     android:focusableInTouchMode="true"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,15 +32,51 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputMobile"
         style="@style/parent.TextLayout"
-        app:boxBackgroundColor="#FFFFFF"
-        android:layout_marginTop="@dimen/signup_text_margin_top">
+        android:layout_marginTop="@dimen/signup_text_margin_top"
+        app:boxBackgroundColor="#FFFFFF">
+
         <EditText
             android:id="@+id/editTextMobile"
             style="@style/modifiedEditText"
+            android:hint="Email"
             android:inputType="textEmailAddress"
-            android:maxLines="1"
-            android:hint="Email"/>
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputPassword1"
+        style="@style/parent.TextLayout"
+        android:layout_marginTop="@dimen/signup_text_margin_top"
+        app:boxBackgroundColor="#FFFFFF">
+
+        <EditText
+            android:id="@+id/editTextPassword"
+            style="@style/modifiedEditText"
+            android:hint="Mật khẩu"
+            android:inputType="textPassword"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputcode"
+        style="@style/parent.TextLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/signup_text_margin_top"
+        app:boxBackgroundColor="#FFFFFF">
+        <EditText
+            android:id="@+id/editTextcode"
+            style="@style/modifiedEditText"
+            android:hint="Code"
+            android:inputType="textPassword"
+            android:maxLines="1" />
+
+        <Button
+            android:id="@+id/getCode"
+            android:layout_width="61dp"
+            android:layout_height="50dp"
+            android:text="Get" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputEmail"
@@ -51,19 +89,6 @@
             android:inputType="textEmailAddress"
             android:maxLines="1"
             android:hint="Tên người dùng"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputPassword"
-        style="@style/parent.TextLayout"
-        app:boxBackgroundColor="#FFFFFF"
-        android:layout_marginTop="@dimen/signup_text_margin_top">
-        <EditText
-            android:id="@+id/editTextPassword"
-            style="@style/modifiedEditText"
-            android:hint="Mật khẩu"
-            android:maxLines="1"
-            android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
@@ -88,21 +113,7 @@
         android:layout_height="wrap_content"
         android:padding="20dp">
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:cropToPadding="true"
-            android:src="@drawable/facebook_button" />
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:cropToPadding="true"
-            android:src="@drawable/google_button" />
     </LinearLayout>
 
 
