@@ -77,7 +77,7 @@ public class OrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
         grantPermission();
-        getLocation();
+        /*getLocation();*/
         String address = getCompleteAddressString(1.3350799637580424,103.96510928086315);
 
         tv_cart_total_price = findViewById(R.id.tv_cart_total_price);
@@ -105,7 +105,7 @@ public class OrderActivity extends AppCompatActivity {
                             @SuppressLint("SetTextI18n")
                             @Override
                             public void onSuccess(HWLocation hwLocation) {
-                                System.out.println("CITY >>> " + hwLocation.getCity());
+                                /*System.out.println("CITY >>> " + hwLocation.getCity());*/
                                 Double latitude = hwLocation.getLatitude();
                                 Double longitude = hwLocation.getLongitude();
                                 edt_cart_cust_lat.setText(latitude + " - " + longitude);
@@ -134,6 +134,7 @@ public class OrderActivity extends AppCompatActivity {
         format = new DecimalFormat("###,###,###");
         SharedPreferences sharedPreferences =  getSharedPreferences("shared preferences", MODE_PRIVATE);
         Gson gson = new Gson();
+        String uid= AGConnectAuth.getInstance().getCurrentUser().getUid();
         String json = sharedPreferences.getString("listcart"+ AGConnectAuth.getInstance().getCurrentUser().getUid(), null);
         Type type = new TypeToken<ArrayList<ProductCart>>() {}.getType();
         mExampleList = gson.fromJson(json, type);
@@ -268,7 +269,7 @@ public class OrderActivity extends AppCompatActivity {
         }
         return strAdd;
     }
-    private void grantPermission(){
+    private void    grantPermission(){
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
             Log.i("TAG", "sdk < 28 Q");
             if (ActivityCompat.checkSelfPermission(this,

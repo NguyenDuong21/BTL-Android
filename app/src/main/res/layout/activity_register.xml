@@ -67,7 +67,7 @@
             android:id="@+id/editTextcode"
             style="@style/modifiedEditText"
             android:hint="Code"
-            android:inputType="textPassword"
+            android:inputType="number"
             android:maxLines="1" />
 
         <Button
