@@ -26,6 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.huawei.agconnect.auth.AGConnectAuth;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -101,8 +102,15 @@ public class MainActivity extends AppCompatActivity {
         openCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CartActivity.class);
-                startActivity(intent);
+                if(AGConnectAuth.getInstance().getCurrentUser() == null)
+                {
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(MainActivity.this, CartActivity.class);
+                    startActivity(intent);
+                }
+
             }
         });
     }
@@ -175,7 +183,14 @@ public class MainActivity extends AppCompatActivity {
     }
     public void openProfile(View view)
     {
-        Intent intent = new Intent(this, ProfileActivity.class);
-        startActivity(intent);
+        if(AGConnectAuth.getInstance().getCurrentUser() == null)
+        {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(this, ProfileActivity.class);
+            startActivity(intent);
+        }
+
     }
 }
