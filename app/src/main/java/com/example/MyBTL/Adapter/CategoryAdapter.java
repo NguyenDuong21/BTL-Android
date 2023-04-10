@@ -73,12 +73,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
                 public void onClick(View v) {
 
                     String nameCat = linearLayout.getTag().toString();
-                    ArrayList<Product> productList = new ArrayList<>();
-                    Query databaseReference = FirebaseDatabase.getInstance().getReference("Products").orderByChild("Category").
+
+                    Query databaseReference = FirebaseDatabase.getInstance().getReference("Products").orderByChild("category").
                             equalTo(nameCat);
                     databaseReference.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                            ArrayList<Product> productList = new ArrayList<>();
                             for (DataSnapshot dataSnapshot : snapshot.getChildren())
                             {
                                 Product product = dataSnapshot.getValue(Product.class);

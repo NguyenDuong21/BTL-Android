@@ -15,10 +15,9 @@
             android:id="@+id/img_order_info"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginTop="5dp"
             android:layout_below="@+id/divider"
-            android:src="@drawable/iphone12xanhla">
-        </ImageView>
+            android:layout_marginTop="5dp"
+            android:src="@drawable/iphone12xanhla"></ImageView>
 
         <TextView
             android:id="@+id/tv_order_info_name"
@@ -60,13 +59,12 @@
             android:id="@+id/tv_order_info_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_order_info_text_num"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/img_order_info"
-            android:layout_below="@+id/tv_order_info_text_num"
             android:text="20.000.000 VND"
-            android:textSize="15sp"
-            android:textColor="@color/red">
-        </TextView>
+            android:textColor="@color/red"
+            android:textSize="15sp"></TextView>
 
         <TextView
             android:id="@+id/tv_order_info_status"

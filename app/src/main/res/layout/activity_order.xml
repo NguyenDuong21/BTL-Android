@@ -135,7 +135,7 @@
         app:layout_constraintTop_toTopOf="@+id/edt_cart_cust_name"
         app:layout_constraintVertical_bias="0.127"></EditText>
 
-    <Button
+    <!--<Button
         android:id="@+id/getLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -144,7 +144,7 @@
         app:layout_constraintBottom_toTopOf="@+id/tv_cart_total"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.035"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />-->
 
     <TextView
         android:id="@+id/tv_cart_total"
@@ -174,7 +174,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_cart_total"></TextView>
 
-    <EditText
+    <!--<EditText
         android:id="@+id/edt_cart_cust_lat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -191,7 +191,7 @@
         app:layout_constraintBottom_toTopOf="@+id/getLocation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.157"
-        app:layout_constraintStart_toStartOf="parent"></EditText>
+        app:layout_constraintStart_toStartOf="parent"></EditText>-->
 
     <Button
         android:id="@+id/btn_cart_order"

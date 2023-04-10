@@ -1,10 +1,29 @@
 package com.example.MyBTL.Model;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Product implements Serializable {
-    private String Name,Category,Description,Image,tag;
+    private String Name,Category,Description,Image,tag, IdProduct;
+    private String luotxem;
     private int Prices;
+    private List<String> Images;
+
+    public List<String> getImages() {
+        return Images;
+    }
+
+    public void setImages(List<String> ImagesSet) {
+        Images = ImagesSet;
+    }
+
+    public String getLuotxem() {
+        return luotxem;
+    }
+
+    public void setLuotxem(String luotxem1) {
+        luotxem = luotxem1;
+    }
 
     public String getImage() {
         return Image;

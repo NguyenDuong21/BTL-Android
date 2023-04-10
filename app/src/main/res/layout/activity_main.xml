@@ -87,6 +87,16 @@
             app:layout_constraintTop_toTopOf="@+id/editText"
             app:layout_constraintVertical_bias="0.653" />
 
+        <Button
+            android:id="@+id/btnthemsanpham"
+            android:text="Thêm sản phẩm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="@+id/editText" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/discountedRecycler"
             android:layout_width="0dp"

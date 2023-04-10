@@ -1,11 +1,13 @@
 package com.example.MyBTL;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
@@ -79,46 +81,51 @@ public class OrderActivity extends AppCompatActivity {
         grantPermission();
         /*getLocation();*/
         String address = getCompleteAddressString(1.3350799637580424,103.96510928086315);
-
+        String latitude1 = "1.3350799637580424";
+        String longitude1 = "103.96510928086315";
         tv_cart_total_price = findViewById(R.id.tv_cart_total_price);
         btn_cart_order = findViewById(R.id.btn_cart_order);
         edt_cart_cust_name = findViewById(R.id.edt_cart_cust_name);
         edt_cart_cust_phone = findViewById(R.id.edt_cart_cust_phone);
         edt_cart_cust_address = findViewById(R.id.edt_cart_cust_address);
         back = findViewById(R.id.back);
-        edt_cart_cust_lat = findViewById(R.id.edt_cart_cust_lat);
-        getLocation = findViewById(R.id.getLocation);
-        getLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String address = null;
-                    /*address = getCompleteAddressString(1.3350799637580424,103.96510928086315);
-                    edt_cart_cust_address.setText(address);*/
-                FusedLocationProviderClient fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(OrderActivity.this);
-                SettingsClient settingsClient = LocationServices.getSettingsClient(OrderActivity.this);
-                LocationRequest mLocationRequest = new LocationRequest();
-                mLocationRequest.setInterval(10000);
-                mLocationRequest.setNeedAddress(true);
-                mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-                fusedLocationProviderClient.getLastLocationWithAddress(mLocationRequest)
-                        .addOnSuccessListener(new com.huawei.hmf.tasks.OnSuccessListener<HWLocation>() {
-                            @SuppressLint("SetTextI18n")
-                            @Override
-                            public void onSuccess(HWLocation hwLocation) {
-                                /*System.out.println("CITY >>> " + hwLocation.getCity());*/
-                                Double latitude = hwLocation.getLatitude();
-                                Double longitude = hwLocation.getLongitude();
-                                edt_cart_cust_lat.setText(latitude + " - " + longitude);
-                            }
-                        })
-                        .addOnFailureListener(new com.huawei.hmf.tasks.OnFailureListener() {
-                            @Override
-                            public void onFailure(Exception e) {
+//        edt_cart_cust_lat = findViewById(R.id.edt_cart_cust_lat);
 
-                            }
-                        });
-            }
-        });
+//        getLocation = findViewById(R.id.getLocation);
+//        getLocation.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String address = null;
+//                    /*address = getCompleteAddressString(1.3350799637580424,103.96510928086315);
+//                    edt_cart_cust_address.setText(address);*/
+//                Toast.makeText(OrderActivity.this, "Kinh do: "+ latitude1+", Vi do "+ longitude1, Toast.LENGTH_LONG).show();
+//                edt_cart_cust_lat.setText(latitude1 + " - " + longitude1);
+//                FusedLocationProviderClient fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(OrderActivity.this);
+//                SettingsClient settingsClient = LocationServices.getSettingsClient(OrderActivity.this);
+//                LocationRequest mLocationRequest = new LocationRequest();
+//                mLocationRequest.setInterval(10000);
+//                mLocationRequest.setNeedAddress(true);
+//                mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+//                fusedLocationProviderClient.getLastLocationWithAddress(mLocationRequest)
+//                        .addOnSuccessListener(new com.huawei.hmf.tasks.OnSuccessListener<HWLocation>() {
+//                            @SuppressLint("SetTextI18n")
+//                            @Override
+//                            public void onSuccess(HWLocation hwLocation) {
+//                                /*System.out.println("CITY >>> " + hwLocation.getCity());*/
+//                                Double latitude = hwLocation.getLatitude();
+//                                Double longitude = hwLocation.getLongitude();
+//                                Toast.makeText(OrderActivity.this, "Kinh do: "+ latitude+", Vi do "+ longitude, Toast.LENGTH_LONG).show();
+//                                edt_cart_cust_lat.setText(latitude + " - " + longitude);
+//                            }
+//                        })
+//                        .addOnFailureListener(new com.huawei.hmf.tasks.OnFailureListener() {
+//                            @Override
+//                            public void onFailure(Exception e) {
+//
+//                            }
+//                        });
+//            }
+//        });
         btn_cart_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -360,6 +367,19 @@ public class OrderActivity extends AppCompatActivity {
                     });
 
                 }
+                AlertDialog.Builder builder = new AlertDialog.Builder(OrderActivity.this);
+                        builder.setMessage("Đăng ký đơn hàng")
+                                .setCancelable(false)
+                                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent intent = new Intent(OrderActivity.this, MainActivity.class);
+                                        startActivity(intent);
+                                    }
+                                });
+                        AlertDialog dialog = builder.create();
+                        dialog.setTitle("Đăng ký đơn hàng thành công");
+                        dialog.show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -379,6 +399,7 @@ public class OrderActivity extends AppCompatActivity {
             detailOrder.setUrlImg(productCart.getImage());
             detailOrder.setNumProduct(productCart.getAmount());
             detailOrder.setStatus("Đang chờ xác nhận");
+            detailOrder.setTag(productCart.gettag());
             listDetailOrder.add(detailOrder);
         }
         return listDetailOrder;

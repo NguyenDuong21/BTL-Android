@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 import com.example.MyBTL.Model.User;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -42,6 +44,7 @@ import org.jetbrains.annotations.NotNull;
 public class ProfileActivity extends AppCompatActivity {
     TextView email, username;
     EditText editTextUserName, editTextPassword, editTextRepeatPassword;
+    /*Button btnSave;*/
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private MaterialCardView logout;
     private ImageView userImg;
@@ -58,6 +61,17 @@ public class ProfileActivity extends AppCompatActivity {
         getUserProfile();
         payment_label = findViewById(R.id.payment_label);
         countOrder();
+
+        // update username
+        /*btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateUserName();
+            }
+        });*/
+        // end update username
+
+
         logout = findViewById(R.id.logoutbn);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +106,28 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
     }
+
+    /*private void updateUserName() {
+        AGConnectUser currentUser = AGConnectAuth.getInstance().getCurrentUser();
+        String userNameUpdate = editTextUserName.getText().toString();
+        if(userNameUpdate == "")
+        {
+            Toast.makeText(ProfileActivity.this, "Tên người dùng không được bỏ trống", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(currentUser != null)
+        {
+            String id = currentUser.getUid();
+
+            DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference("Users").child(id);
+            fireRef.child("userName").setValue(userNameUpdate).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+                    Toast.makeText(ProfileActivity.this, "Update tên người dùng thành công", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }*/
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
@@ -142,6 +178,7 @@ public class ProfileActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
         username = findViewById(R.id.username);
         editTextUserName = findViewById(R.id.editTextUsername);
+        /*btnSave = findViewById(R.id.save);*/
         /*editTextPassword = findViewById(R.id.editTextPassword);
         editTextRepeatPassword = findViewById(R.id.editTextRepeatPassword);*/
 

@@ -21,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ListProductActivity extends AppCompatActivity {
@@ -47,6 +48,12 @@ public class ListProductActivity extends AppCompatActivity {
     }
     private void setProductView(List<Product> list)
     {
+        // sort by price
+        /*Collections.sort(list,(p1, p2) -> {
+            return p2.getPrices() - p1.getPrices(); // negative p1 before p2, positive p2 before p1
+        });*/
+        // end sort
+
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);
         recyclerViewProduct.setLayoutManager(layoutManager);
         productAdapter = new ProductAdapter(this);

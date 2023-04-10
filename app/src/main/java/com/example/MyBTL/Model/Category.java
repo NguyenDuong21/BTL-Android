@@ -37,4 +37,9 @@ public class Category {
     public void setTag(String tag) {
         Tag = tag;
     }
+
+    @Override
+    public String toString() {
+        return Name;
+    }
 }

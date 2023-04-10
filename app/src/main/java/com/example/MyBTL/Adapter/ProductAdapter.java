@@ -15,14 +15,23 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.MyBTL.LoginActivity;
+import com.example.MyBTL.Model.DetailOrder;
 import com.example.MyBTL.Model.Product;
 import com.example.MyBTL.Model.ProductCart;
 import com.example.MyBTL.ProductDetailActivity;
 import com.example.MyBTL.R;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.huawei.agconnect.auth.AGConnectAuth;
 import com.squareup.picasso.Picasso;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Type;
 import java.text.DecimalFormat;
@@ -61,6 +70,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.Name.setText(product.getName());
         holder.Price.setText( format.format(product.getPrices()));
         holder.cardicon.setTag(product.gettag());
+        /*holder.productView.setText(product.getLuotxem());*/
         holder.cardicon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,7 +120,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     }
 
     public class ProductViewHolder extends RecyclerView.ViewHolder{
-        private TextView Name , Price;
+        private TextView Name , Price,productView;
         private ImageView imageView,cardicon;
         public ProductViewHolder(@NonNull @org.jetbrains.annotations.NotNull View itemView) {
             super(itemView);
@@ -118,31 +128,83 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             Price = itemView.findViewById(R.id.productPrice);
             imageView = itemView.findViewById(R.id.productImage);
             cardicon = itemView.findViewById(R.id.imageView7);
+            /*productView = itemView.findViewById(R.id.productView);*/
+            /*DatabaseReference myref = FirebaseDatabase.getInstance().getReference("DbOrder").child(AGConnectAuth.getInstance().getCurrentUser().getUid());
+            final int[] solanmua = {0};
+            myref.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren())
+                    {
+                        String keyOrder = dataSnapshot.getKey();
+                        myref.child(keyOrder).child("detail").orderByChild("tag").equalTo(cardicon.getTag().toString()).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot1) {
+                                for (DataSnapshot dataSnapshot1 : snapshot1.getChildren())
+                                {
+                                    DetailOrder detailOrder = dataSnapshot1.getValue(DetailOrder.class);
+                                    solanmua[0] += detailOrder.getNumProduct();
+                                    notifyDataSetChanged();
+                                }
+                                productView.setText(String.valueOf(solanmua[0]));
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                            }
+                        });
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                }
+            });*/
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    /*DatabaseReference myref = FirebaseDatabase.getInstance().getReference("Products").child(cardicon.getTag().toString()).child("luotxem");
+                    myref.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                            if(!snapshot.exists())
+                            {
+                                myref.setValue("1").addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Intent intent = new Intent(mContext, ProductDetailActivity.class);
+                                        intent.putExtra("idsp", cardicon.getTag().toString());
+                                        mContext.startActivity(intent);
+                                    }
+                                });
+                            } else {
+                                int luotxem = Integer.parseInt(snapshot.getValue().toString());
+                                String luot_xemupdate = String.valueOf(luotxem + 1);
+                                myref.setValue(luot_xemupdate).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Intent intent = new Intent(mContext, ProductDetailActivity.class);
+                                        intent.putExtra("idsp", cardicon.getTag().toString());
+                                        mContext.startActivity(intent);
+                                    }
+                                });
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                        }
+                    });*/
                     Intent intent = new Intent(mContext, ProductDetailActivity.class);
                     intent.putExtra("idsp", cardicon.getTag().toString());
                     mContext.startActivity(intent);
                 }
             });
-            /*cardicon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    SharedPreferences sharedPreferences =  mContext.getSharedPreferences("shared preferences", MODE_PRIVATE);
-                    Gson gson = new Gson();
-                    String json = sharedPreferences.getString("listcart", null);
-                    Type type = new TypeToken<ArrayList<ProductCart>>() {}.getType();
-                    ArrayList<ProductCart> mExampleList;
-                    mExampleList = gson.fromJson(json, type);
 
-                    if (mExampleList == null) {
-                        mExampleList = new ArrayList<>();
-                    }
-
-                    Log.e("tag", "MyTag " + cardicon.getTag());
-                }
-            });*/
         }
     }
 }

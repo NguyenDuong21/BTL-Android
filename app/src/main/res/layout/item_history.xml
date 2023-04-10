@@ -46,10 +46,9 @@
             android:id="@+id/img_hitory_product"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="5dp"
             android:layout_below="@+id/divider"
-            android:src="@drawable/iphone12xanhla">
-        </ImageView>
+            android:layout_marginTop="5dp"
+            android:src="@drawable/iphone12xanhla"></ImageView>
 
         <TextView
             android:id="@+id/tv_hitory_product_name"

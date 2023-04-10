@@ -15,6 +15,9 @@ import com.example.MyBTL.R;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class HistoryProductAdapter extends RecyclerView.Adapter<HistoryProductAdapter.HistoryProductViewHolder> {
@@ -49,11 +52,20 @@ public class HistoryProductAdapter extends RecyclerView.Adapter<HistoryProductAd
             holder.tvHitoryProductPrice.setText(formatPrice.format(detailOrder.getProductPrice()) + "VNĐ");
             holder.tvHitoryProductStatus.setText(detailOrder.getStatus());
             holder.tvHitoryProductOrderNo.setText(detailOrder.getOrderNo().toUpperCase());
-
+            SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat dateFormat2 = new SimpleDateFormat("dd/MM/yyyy");
             for (Order order : listOrder){
                 if (order.getOrderNo().equals(detailOrder.getOrderNo() ) ){
-                    holder.tvHitoryProductDate.setText(order.getDateOrder());
-                    break;
+                    try {
+                        Date dateConverted = dateFormat1.parse(order.getDateOrder());
+                        String dateformated = dateFormat2.format(dateConverted);
+                        holder.tvHitoryProductDate.setText(dateformated);
+                        break;
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+
                 }
             }
 

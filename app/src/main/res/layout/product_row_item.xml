@@ -38,7 +38,7 @@
         <RelativeLayout
             android:id="@id/wrap_content"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="60dp"
             android:orientation="horizontal">
 
             <TextView
@@ -50,6 +50,18 @@
                 android:textColor="@color/blackTextColor"
                 android:textFontWeight="700"
                 android:textSize="20dp" />
+
+            <!--<TextView
+                android:id="@+id/productView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="0"
+                android:layout_marginTop="30dp"
+                android:textColor="@color/blackTextColor"
+                android:textFontWeight="700"
+                android:textSize="20dp" />-->
+
 
             <ImageView
                 android:id="@+id/imageView7"

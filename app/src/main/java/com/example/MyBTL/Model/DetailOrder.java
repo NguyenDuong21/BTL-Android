@@ -7,7 +7,7 @@ public class DetailOrder {
     private String status;
     private int productPrice;
     private int numProduct;
-
+    private String tag;
     public DetailOrder(){
     }
 
@@ -16,6 +16,14 @@ public class DetailOrder {
         this.urlImg = urlImg;
         this.status = status;
         this.productPrice = productPrice;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag1) {
+        tag = tag1;
     }
 
     public String getOrderNo() {
